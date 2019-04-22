@@ -9,5 +9,36 @@
                  android:icon="@mipmap/ic_launcher"
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
-                 android:theme="@style/AppTheme"/>
+                 android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+                  android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <!-- Default category is required for the intent filter to work -->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!-- Browsable also enables opening this app through a link on a website -->
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- Intent filters without data will never be triggered on NFC devices.
+                Always define the specific data you expect to be present. -->
+                <data android:scheme="https" android:host="www.andreasjakl.com"/>
+                <!-- Additionally support http scheme. See:
+                https://developer.android.com/training/app-links/verify-site-associations.html -->
+                <data android:scheme="http"/>
+            </intent-filter>
+
+            <!-- Also register for the URL if it appears outside of NFC tags -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="www.andreasjakl.com"/>
+                <data android:scheme="http"/>
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>
