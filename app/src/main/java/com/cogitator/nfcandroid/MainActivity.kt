@@ -205,6 +205,6 @@ class MainActivity : AppCompatActivity() {
      * Scroll the ScrollView to the bottom, so that the latest appended messages are visible.
      */
     private fun scrollDown() {
-        sv_messages.post({ sv_messages.smoothScrollTo(0, sv_messages.bottom) })
+        sv_messages.post { sv_messages.smoothScrollTo(0, sv_messages.bottom) }
     }
 }
