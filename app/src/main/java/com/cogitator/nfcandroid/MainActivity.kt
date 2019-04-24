@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.text.Spanned
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * @author Ankit Kumar on 22/04/2019
@@ -15,7 +16,7 @@ import android.text.Spanned
 class MainActivity : AppCompatActivity() {
 
     // NFC adapter for checking NFC state in the device
-    private var nfcAdapter : NfcAdapter? = null
+    private var nfcAdapter: NfcAdapter? = null
 
     // Pending intent for NFC intent foreground dispatch.
     // Used to read all NDEF tags while the app is running in the foreground.
@@ -44,8 +45,10 @@ class MainActivity : AppCompatActivity() {
         // Create a generic PendingIntent that will be deliver to this activity. The NFC stack
         // will fill in the intent with the details of the discovered tag before delivering to
         // this activity.
-        nfcPendingIntent = PendingIntent.getActivity(this, 0,
-            Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0)
+        nfcPendingIntent = PendingIntent.getActivity(
+            this, 0,
+            Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
+        )
 
         // Optional: Setup an intent filter from code for a specific NDEF intent
         // Use this code if you are only interested in a specific intent and don't want to
